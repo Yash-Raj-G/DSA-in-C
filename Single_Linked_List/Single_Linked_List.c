@@ -116,12 +116,85 @@ void apinsert()
         }
     }
 }
+void fdelete()
+{
+    node *tmp;
+    if(start==NULL)
+        printf("\nEmpty");
+    else
+    {
+        tmp=start;
+        start=start->next;
+        free(tmp);
+        printf("\nFirst Node Deleted...");
+    }
+}
+void ldelete()
+{
+    node *tmp,*tmp1;
+    tmp=start;
+    if(start==NULL)
+    printf("\nEmpty");
+    else if(tmp->next==NULL)
+    {
+        start=NULL;
+        free(tmp);
+        printf("\nLast Node Deleted...");
+    }
+    else
+    {
+        while(tmp->next->next!=NULL)
+            tmp=tmp->next;
+        tmp1=tmp->next;
+        tmp->next=NULL;
+        free(tmp1);
+        printf("\nLast Node Deleted...");
+    }
+}
+void apdelete()
+{
+    node *tmp,*tmp1; int pos,count=0,i;
+    tmp1=start;
+    if(start==NULL)
+    printf("\nEmpty");
+    else
+    {
+        while(tmp1!=NULL)
+        {
+            count++;
+            tmp1=tmp1->next;
+        }
+        printf("\nEnter Position:");
+        scanf("%d",&pos);
+        if(pos<1||pos>count)
+        printf("\nInvalid Position");
+        else 
+        {
+            if(pos==1)
+            {
+            tmp1=start;
+            start=start->next;
+            free(tmp1); printf("\nNode Deleted...");
+            }
+            else
+            {
+                tmp1=start;
+                for(i=1;i<pos-1;i++)
+                    tmp1=tmp1->next;
+                tmp=tmp1->next;
+                tmp1->next=tmp->next;
+                free(tmp);
+                printf("\nNode Deleted...");
+            }
+        }
+    }
+}
 int main()
 {
     int choice;
     while(1)
     {
-        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Exit\nEnter Choice:");
+        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Exit\nEnter Choice:");
         scanf("%d",&choice);
         if(choice==1)
         create();
@@ -136,6 +209,12 @@ int main()
         else if(choice==6)
         apinsert();
         else if(choice==7)
+        fdelete();
+        else if(choice==8)
+        ldelete();
+        else if(choice==9)
+        apdelete();
+        else if(choice==10)
         break;
         else
         printf("\nEnter valid choice");
