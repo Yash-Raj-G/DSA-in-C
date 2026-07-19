@@ -1,2 +1,2 @@
 # DSA-in-C
-My DSA Programs 
+Data Structures & Algorithms in C - Learning and implementation
