@@ -189,12 +189,28 @@ void apdelete()
         }
     }
 }
+void sum()
+{
+    node *tmp; int s=0;
+    tmp=start;
+    if(tmp==NULL)
+        printf("\nEmpty");
+    else
+    {
+        while(tmp!=NULL)
+        {
+            s+=tmp->data;
+            tmp=tmp->next;
+        }
+        printf("\nSum :%d",s);
+    }
+}
 int main()
 {
     int choice;
     while(1)
     {
-        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Exit\nEnter Choice:");
+        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Sum of Node Elements\n11->Exit\nEnter Choice:");
         scanf("%d",&choice);
         if(choice==1)
         create();
@@ -215,6 +231,8 @@ int main()
         else if(choice==9)
         apdelete();
         else if(choice==10)
+        sum();
+        else if(choice==11)
         break;
         else
         printf("\nEnter valid choice");
