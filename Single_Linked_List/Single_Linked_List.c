@@ -249,12 +249,33 @@ void search()
             printf("\nValue Not Found");
     }
 }
+void frequency()
+{
+    node *tmp; int val,count=0; tmp=start;
+    if(tmp==NULL)
+    printf("\nEmpty");
+    else
+    {
+        printf("\nEnter Value To Find Frequency:");
+        scanf("%d",&val);
+        while(tmp!=NULL)
+        {
+            if(tmp->data==val)
+            count++;
+            tmp=tmp->next;
+        }
+        if(count>0)
+        printf("\nFrequency of %d is %d",val,count);
+        else
+        printf("\nValue Not Found");
+    }
+}
 int main()
 {
     int choice;
     while(1)
     {
-        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Sum of Node Elements\n11->Print Alternate Nodes\n12->Search Element\n13->Exit\nEnter Choice:");
+        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Sum of Node Elements\n11->Print Alternate Nodes\n12->Search Element\n13->Find Frequency Of Number\n14->Exit\nEnter Choice:");
         scanf("%d",&choice);
         if(choice==1)
         create();
@@ -281,6 +302,8 @@ int main()
         else if(choice==12)
         search();
         else if(choice==13)
+        frequency();
+        else if(choice==14)
         break;
         else
         printf("\nEnter valid choice");
