@@ -270,12 +270,40 @@ void frequency()
         printf("\nValue Not Found");
     }
 }
+void reverse()
+{
+    node *pn,*cn,*tmp;
+    if(start==NULL)
+    printf("\nEmpty");
+    else
+    {
+        pn=start;
+        cn=pn->next;
+        start=start->next;
+        pn->next=NULL;  
+        while(start!=NULL)
+        {
+            start=start->next;
+            cn->next=pn;
+            pn=cn;
+            cn=start;
+        }
+        start=pn;
+    }
+    tmp=start;
+    printf("\nReversed Linked List:");
+    while(tmp!=NULL)
+    {
+        printf("\n%d",tmp->data);
+        tmp=tmp->next;
+    }
+}
 int main()
 {
     int choice;
     while(1)
     {
-        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Sum of Node Elements\n11->Print Alternate Nodes\n12->Search Element\n13->Find Frequency Of Number\n14->Exit\nEnter Choice:");
+        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Sum of Node Elements\n11->Print Alternate Nodes\n12->Search Element\n13->Find Frequency Of Number\n14->Reverse Linked List\n15->Exit\nEnter Choice:");
         scanf("%d",&choice);
         if(choice==1)
         create();
@@ -304,6 +332,8 @@ int main()
         else if(choice==13)
         frequency();
         else if(choice==14)
+        reverse();
+        else if(choice==15)
         break;
         else
         printf("\nEnter valid choice");
