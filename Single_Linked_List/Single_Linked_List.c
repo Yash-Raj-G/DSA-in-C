@@ -316,12 +316,30 @@ void maxval()
         printf("\nMaximum Value:%d",max);
     }
 }
+void minval()
+{
+    node *tmp; int min;
+    tmp=start;
+    if(tmp==NULL)
+    printf("\nEmpty");
+    else
+    {
+        min=tmp->data;
+        while(tmp!=NULL)
+        {
+            if(tmp->data<min)
+            min=tmp->data;
+            tmp=tmp->next;
+        }
+        printf("\nMinimum Value:%d",min);
+    }
+}
 int main()
 {
     int choice;
     while(1)
     {
-        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Sum of Node Elements\n11->Print Alternate Nodes\n12->Search Element\n13->Find Frequency Of Number\n14->Reverse Linked List\n15->Max Value\n16->Exit\nEnter Choice:");
+        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Sum of Node Elements\n11->Print Alternate Nodes\n12->Search Element\n13->Find Frequency Of Number\n14->Reverse Linked List\n15->Max Value\n16->Min Value\n17->Exit\nEnter Choice:");
         scanf("%d",&choice);
         if(choice==1)
         create();
@@ -354,6 +372,8 @@ int main()
         else if(choice==15)
         maxval();
         else if(choice==16)
+        minval();
+        else if(choice==17)
         break;
         else
         printf("\nEnter valid choice");
