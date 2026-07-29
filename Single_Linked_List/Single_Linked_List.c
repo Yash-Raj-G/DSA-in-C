@@ -334,12 +334,40 @@ void minval()
         printf("\nMinimum Value:%d",min);
     }
 }
+void midelement()
+{
+    node *tmp; int count=0,i;
+    tmp=start;
+    if(tmp==NULL)
+    printf("\nEmpty");
+    else
+    {
+        while(tmp!=NULL)
+        {
+            count++;
+            tmp=tmp->next;
+        }
+        tmp=start;
+        if(count%2==0)
+        {
+            for(i=0;i<(count/2)-1;i++)
+            tmp=tmp->next;
+            printf("\nMiddle Elements:%d and %d",tmp->data,tmp->next->data);
+        }
+        else
+        {
+            for(i=0;i<count/2;i++)
+            tmp=tmp->next;
+            printf("\nMiddle Element:%d",tmp->data);
+        }
+    }
+}
 int main()
 {
     int choice;
     while(1)
     {
-        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Sum of Node Elements\n11->Print Alternate Nodes\n12->Search Element\n13->Find Frequency Of Number\n14->Reverse Linked List\n15->Max Value\n16->Min Value\n17->Exit\nEnter Choice:");
+        printf("\n1->Create Single Linked List\n2->Display Linked List\n3->Insert Node At First Position\n4->Insert Node At Last Position\n5->Count Nodes\n6->Insert Node At Any Position\n7->Delete First Node\n8->Delete Last Node\n9->Delete Node At Any Position\n10->Sum of Node Elements\n11->Print Alternate Nodes\n12->Search Element\n13->Find Frequency Of Number\n14->Reverse Linked List\n15->Max Value\n16->Min Value\n17->Middle Element\n18->Exit\nEnter Choice:");
         scanf("%d",&choice);
         if(choice==1)
         create();
@@ -374,6 +402,8 @@ int main()
         else if(choice==16)
         minval();
         else if(choice==17)
+        midelement();
+        else if(choice==18)
         break;
         else
         printf("\nEnter valid choice");
