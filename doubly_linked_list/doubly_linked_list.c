@@ -9,18 +9,21 @@ struct dlist
 typedef struct dlist node;
 void create();
 void display();
+void finsert();
 int main()
 {
     int choice;
     while(1)
     {
-    printf("\n1->Create\n2->Display\n3->Exit\nEnter Your Choice:");
+    printf("\n1->Create\n2->Display\n3->First Insert\n4->Exit\nEnter Your Choice:");
     scanf("%d",&choice);
     if(choice==1)
     create();
     else if(choice==2)
     display();
     else if(choice==3)
+    finsert();
+    else if(choice==4)
     break;
     else
     printf("\nInvalid Choice");
@@ -65,4 +68,25 @@ void display()
             tmp=tmp->next;
         }
     }
+}
+void finsert()
+{
+    node *tmp;
+    tmp=(node *)malloc(sizeof(node));
+    printf("\nEnter Data:");
+    scanf("%d",&tmp->data);
+    if(head==NULL)
+    {
+        tmp->next=NULL;
+        tmp->prev=NULL;
+        head=tmp;
+    }
+    else
+    {
+        tmp->next=head;
+        head->prev=tmp;
+        tmp->prev=NULL;
+        head=tmp;
+    }
+    printf("\nNode Inserted...");
 }
