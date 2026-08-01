@@ -10,12 +10,13 @@ typedef struct dlist node;
 void create();
 void display();
 void finsert();
+void linsert();
 int main()
 {
     int choice;
     while(1)
     {
-    printf("\n1->Create\n2->Display\n3->First Insert\n4->Exit\nEnter Your Choice:");
+    printf("\n1->Create\n2->Display\n3->First Insert\n4->Last Insert\n5->Exit\nEnter Your Choice:");
     scanf("%d",&choice);
     if(choice==1)
     create();
@@ -24,6 +25,8 @@ int main()
     else if(choice==3)
     finsert();
     else if(choice==4)
+    linsert();
+    else if(choice==5)
     break;
     else
     printf("\nInvalid Choice");
@@ -87,6 +90,29 @@ void finsert()
         head->prev=tmp;
         tmp->prev=NULL;
         head=tmp;
+    }
+    printf("\nNode Inserted...");
+}
+void linsert()
+{
+    node *tmp,*tmp1;
+    tmp=(node *)malloc(sizeof(node));
+    printf("\nEnter Data:");
+    scanf("%d",&tmp->data);
+    if(head==NULL)
+    {
+        tmp->next=NULL;
+        tmp->prev=NULL;
+        head=tmp;
+    }
+    else
+    {
+        tmp1=head;
+        while(tmp1->next!=NULL)
+        tmp1=tmp1->next;
+        tmp1->next=tmp;
+        tmp->prev=tmp1;
+        tmp->next=NULL;
     }
     printf("\nNode Inserted...");
 }
