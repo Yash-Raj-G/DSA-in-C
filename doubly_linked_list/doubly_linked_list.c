@@ -11,12 +11,13 @@ void create();
 void display();
 void finsert();
 void linsert();
+void countnodes();
 int main()
 {
     int choice;
     while(1)
     {
-    printf("\n1->Create\n2->Display\n3->First Insert\n4->Last Insert\n5->Exit\nEnter Your Choice:");
+    printf("\n1->Create\n2->Display\n3->First Insert\n4->Last Insert\n5->Count Nodes\n6->Exit\nEnter Your Choice:");
     scanf("%d",&choice);
     if(choice==1)
     create();
@@ -27,6 +28,8 @@ int main()
     else if(choice==4)
     linsert();
     else if(choice==5)
+    countnodes();
+    else if(choice==6)
     break;
     else
     printf("\nInvalid Choice");
@@ -115,4 +118,21 @@ void linsert()
         tmp->next=NULL;
     }
     printf("\nNode Inserted...");
+}
+void countnodes()
+{
+    node *tmp;
+    int count=0;
+    tmp=head;
+    if(tmp==NULL)
+    printf("\nEmpty");
+    else
+    {
+        while(tmp!=NULL)
+        {
+            count++;
+            tmp=tmp->next;
+        }
+        printf("\nTotal Nodes: %d",count);
+    }
 }
