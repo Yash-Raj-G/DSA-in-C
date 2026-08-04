@@ -162,6 +162,7 @@ void apinsert()
         head->prev=tmp;
         tmp->prev=NULL;
         head=tmp;
+        printf("\nNode Inserted...");
     }
     else if(pos==count+1)
     {
@@ -171,6 +172,7 @@ void apinsert()
         tmp1->next=tmp;
         tmp->prev=tmp1;
         tmp->next=NULL;
+        printf("\nNode Inserted...");
     }
     else
     {
@@ -181,10 +183,9 @@ void apinsert()
             i++;
         }
         tmp->next=tmp1->next;
-        tmp1->next->prev=tmp;
+        tmp->next->prev=tmp;
         tmp1->next=tmp;
         tmp->prev=tmp1;
+        printf("\nNode Inserted...");
     }
-
-
 }
