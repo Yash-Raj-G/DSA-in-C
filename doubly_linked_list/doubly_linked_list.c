@@ -13,12 +13,13 @@ void finsert();
 void linsert();
 void countnodes();
 void apinsert();
+void fdelete();
 int main()
 {
     int choice;
     while(1)
     {
-    printf("\n1->Create\n2->Display\n3->First Insert\n4->Last Insert\n5->Count Nodes\n6->Any Position Insert\n7->Exit\nEnter Your Choice:");
+    printf("\n1->Create\n2->Display\n3->First Insert\n4->Last Insert\n5->Count Nodes\n6->Any Position Insert\n7->First Delete\n8->Exit\nEnter Your Choice:");
     scanf("%d",&choice);
     if(choice==1)
     create();
@@ -33,6 +34,8 @@ int main()
     else if(choice==6)
     apinsert();
     else if(choice==7)
+    fdelete();
+    else if(choice==8)
     break;
     else
     printf("\nInvalid Choice");
@@ -159,8 +162,8 @@ void apinsert()
     else if(pos==1)
     {
         tmp->next=head;
-        head->prev=tmp;
         tmp->prev=NULL;
+        head->prev=tmp;
         head=tmp;
         printf("\nNode Inserted...");
     }
@@ -187,5 +190,25 @@ void apinsert()
         tmp1->next=tmp;
         tmp->prev=tmp1;
         printf("\nNode Inserted...");
+    }
+}
+void fdelete()
+{
+    node *tmp;
+    if(head==NULL)
+    printf("\nEmpty");
+    else if(head->next==NULL)
+    {
+        free(head);
+        head=NULL;
+        printf("\nNode Deleted...");
+    }
+    else
+    {
+        tmp=head->next;
+        tmp->prev=NULL;
+        free(head);
+        head=tmp;
+        printf("\nNode Deleted...");    
     }
 }
