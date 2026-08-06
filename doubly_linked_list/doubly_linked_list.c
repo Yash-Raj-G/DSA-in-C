@@ -14,12 +14,13 @@ void linsert();
 void countnodes();
 void apinsert();
 void fdelete();
+void ldelete();
 int main()
 {
     int choice;
     while(1)
     {
-    printf("\n1->Create\n2->Display\n3->First Insert\n4->Last Insert\n5->Count Nodes\n6->Any Position Insert\n7->First Delete\n8->Exit\nEnter Your Choice:");
+    printf("\n1->Create\n2->Display\n3->First Insert\n4->Last Insert\n5->Count Nodes\n6->Any Position Insert\n7->First Delete\n8->Last Delete\n9->Exit\nEnter Your Choice:");
     scanf("%d",&choice);
     if(choice==1)
     create();
@@ -36,6 +37,8 @@ int main()
     else if(choice==7)
     fdelete();
     else if(choice==8)
+    ldelete();
+    else if(choice==9)
     break;
     else
     printf("\nInvalid Choice");
@@ -210,5 +213,28 @@ void fdelete()
         free(head);
         head=tmp;
         printf("\nNode Deleted...");    
+    }
+}
+void ldelete()
+{
+    node *tmp;
+    tmp=head;
+    if(tmp==NULL)
+    printf("\nEmpty");
+    else
+    {
+        if(tmp->next==NULL)
+        {
+            head=NULL;
+            free(tmp);
+        }
+        else
+        {
+            while(tmp->next!=NULL)
+            tmp=tmp->next;
+            tmp->prev->next=NULL;
+            free(tmp);
+        }
+        printf("\nNode Deleted...");
     }
 }
